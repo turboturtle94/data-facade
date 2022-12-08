@@ -17,68 +17,68 @@ export const ChartConfig = () => {
   const dispatchChartActions = useContext(ChartDispatchContext);
   const onTypeChange = (value) => {
     dispatchChartActions({
-      type:"changeType",
-      value
-    })
+      type: "changeType",
+      value,
+    });
   };
   const onOrientationChange = (value) => {
-        dispatchChartActions({
-      type:"changeOrientation",
-      value
+    dispatchChartActions({
+      type: "changeOrientation",
+      value,
     });
   };
   const onXColumnChange = (value) => {
-        dispatchChartActions({
-      type:"changeXColumn",
-      value
+    dispatchChartActions({
+      type: "changeXColumn",
+      value,
     });
   };
 
   const onXTypeChange = (value) => {
-        dispatchChartActions({
-      type:"changeXType",
-      value
+    dispatchChartActions({
+      type: "changeXType",
+      value,
     });
   };
-  
+
   const onXAggChange = (value) => {
-        dispatchChartActions({
-      type:"changeXAgg",
-      value
+    dispatchChartActions({
+      type: "changeXAgg",
+      value,
     });
-  }
+  };
   const onXSortChange = (value) => {
-        dispatchChartActions({
-      type:"changeXSort",
-      value
+    dispatchChartActions({
+      type: "changeXSort",
+      value,
     });
-  }
+  };
   const onYColumnChange = (value) => {
-        dispatchChartActions({
-      type:"changeYColumn",
-      value
+    dispatchChartActions({
+      type: "changeYColumn",
+      value,
     });
   };
 
   const onYTypeChange = (value) => {
-        dispatchChartActions({
-      type:"changeYType",
-      value
+    dispatchChartActions({
+      type: "changeYType",
+      value,
     });
   };
-  
+
   const onYAggChange = (value) => {
-        dispatchChartActions({
-      type:"changeYAgg",
-      value
+    dispatchChartActions({
+      type: "changeYAgg",
+      value,
     });
-  }
+  };
   const onYSortChange = (value) => {
-        dispatchChartActions({
-      type:"changeYSort",
-      value
+    dispatchChartActions({
+      type: "changeYSort",
+      value,
     });
-  }
+  };
   return (
     <ChartConfigWrapper>
       <div className="chart-config-data">
@@ -422,6 +422,11 @@ const ChartConfigWrapper = styled.div`
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      input {
+        width: 20px;
+        height: 20px;
+        background-color: #5664d2;
+      }
     }
   }
   div.chart-config-axis {
