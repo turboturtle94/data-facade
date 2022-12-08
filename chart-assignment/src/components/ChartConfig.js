@@ -1,17 +1,84 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styled from "styled-components";
 
 import { AdvancedStyledDropDown, BasicStyledDropDown } from "./StyledDropdown";
 
-import chartConfig from "../resources/chartConfig.json";
+import chartData from "../resources/chartConfig.json";
 
 import { SVGMapper } from "./SVGMapper";
 
+import { ChartContext, ChartDispatchContext } from "./ChartContext";
+
+import rowData from "../resources/response1.json";
+
 export const ChartConfig = () => {
-  const onSelect = (value) => {
-    console.log(value);
+  const chartConfig = useContext(ChartContext);
+  const dispatchChartActions = useContext(ChartDispatchContext);
+  const onTypeChange = (value) => {
+    dispatchChartActions({
+      type:"changeType",
+      value
+    })
   };
+  const onOrientationChange = (value) => {
+        dispatchChartActions({
+      type:"changeOrientation",
+      value
+    });
+  };
+  const onXColumnChange = (value) => {
+        dispatchChartActions({
+      type:"changeXColumn",
+      value
+    });
+  };
+
+  const onXTypeChange = (value) => {
+        dispatchChartActions({
+      type:"changeXType",
+      value
+    });
+  };
+  
+  const onXAggChange = (value) => {
+        dispatchChartActions({
+      type:"changeXAgg",
+      value
+    });
+  }
+  const onXSortChange = (value) => {
+        dispatchChartActions({
+      type:"changeXSort",
+      value
+    });
+  }
+  const onYColumnChange = (value) => {
+        dispatchChartActions({
+      type:"changeYColumn",
+      value
+    });
+  };
+
+  const onYTypeChange = (value) => {
+        dispatchChartActions({
+      type:"changeYType",
+      value
+    });
+  };
+  
+  const onYAggChange = (value) => {
+        dispatchChartActions({
+      type:"changeYAgg",
+      value
+    });
+  }
+  const onYSortChange = (value) => {
+        dispatchChartActions({
+      type:"changeYSort",
+      value
+    });
+  }
   return (
     <ChartConfigWrapper>
       <div className="chart-config-data">
@@ -20,8 +87,8 @@ export const ChartConfig = () => {
           width="209"
           height="33.57"
           defaultValue={"Action Output"}
-          callback={onSelect}
-          content={chartConfig.data.items}
+          callback={onTypeChange}
+          content={chartData.data.items}
         ></BasicStyledDropDown>
         <button>
           <SVGMapper name="upload"></SVGMapper>
@@ -35,9 +102,9 @@ export const ChartConfig = () => {
             width="260"
             height="34"
             backgroundColor="#EDF0F4"
-            content={chartConfig.type.items}
-            defaultValue="Bar"
-            callback={onSelect}
+            content={chartData.type.items}
+            defaultValue={chartConfig.type}
+            callback={onTypeChange}
           ></AdvancedStyledDropDown>
           <button>
             <svg
@@ -76,9 +143,9 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.orientation}
+              callback={onOrientationChange}
+              content={chartData.orientation.items}
             ></BasicStyledDropDown>
           </div>
           <div className="chart-config-orientation-radio">
@@ -94,6 +161,17 @@ export const ChartConfig = () => {
       <div className="chart-config chart-config-axis">
         <div className="chart-config-axis-select">
           <label>X-Axis</label>
+          <AdvancedStyledDropDown
+            width="260"
+            height="34"
+            backgroundColor="#EDF0F4"
+            content={Object.keys(rowData.results[0]).map((item) => {
+              return { label: item, value: item };
+            })}
+            callback={onXColumnChange}
+            defaultValue={chartConfig.xColumn}
+            defaultIcon={"columns"}
+          ></AdvancedStyledDropDown>
           <button>
             <svg
               width="22"
@@ -131,9 +209,8 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.xTitle}
+              content={chartData.orientation.items}
             ></BasicStyledDropDown>
           </div>
           <div className="chart-config-axis chart-config-type-select">
@@ -141,9 +218,9 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.xType}
+              callback={onXTypeChange}
+              content={chartData.axisType.items}
             ></BasicStyledDropDown>
           </div>
           <div className="chart-config-axis chart-config-aggregate-select">
@@ -151,9 +228,9 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.xAggregate}
+              callback={onXAggChange}
+              content={chartData.aggregate.items}
             ></BasicStyledDropDown>
           </div>
           <div className="chart-config-axis chart-config-sort-select">
@@ -161,9 +238,9 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.xSort}
+              callback={onXSortChange}
+              content={chartData.sort.items}
             ></BasicStyledDropDown>
           </div>
         </div>
@@ -172,6 +249,18 @@ export const ChartConfig = () => {
       <div className="chart-config chart-config-axis">
         <div className="chart-config-axis-select">
           <label>Y-Axis</label>
+
+          <AdvancedStyledDropDown
+            width="260"
+            height="34"
+            backgroundColor="#EDF0F4"
+            content={Object.keys(rowData.results[0]).map((item) => {
+              return { label: item, value: item };
+            })}
+            callback={onYColumnChange}
+            defaultValue={chartConfig.yColumn}
+            defaultIcon={"columns"}
+          ></AdvancedStyledDropDown>
           <button>
             <svg
               width="22"
@@ -209,9 +298,8 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.yTitle}
+              content={chartData.orientation.items}
             ></BasicStyledDropDown>
           </div>
           <div className="chart-config-axis chart-config-type-select">
@@ -219,9 +307,9 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.yType}
+              callback={onYTypeChange}
+              content={chartData.axisType.items}
             ></BasicStyledDropDown>
           </div>
           <div className="chart-config-axis chart-config-aggregate-select">
@@ -229,9 +317,9 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.yAggregate}
+              callback={onYAggChange}
+              content={chartData.aggregate.items}
             ></BasicStyledDropDown>
           </div>
           <div className="chart-config-axis chart-config-sort-select">
@@ -239,9 +327,9 @@ export const ChartConfig = () => {
             <BasicStyledDropDown
               width="209"
               height="33.57"
-              defaultValue={"Horizontal"}
-              callback={onSelect}
-              content={chartConfig.orientation.items}
+              defaultValue={chartConfig.ySort}
+              callback={onYSortChange}
+              content={chartData.sort.items}
             ></BasicStyledDropDown>
           </div>
         </div>
@@ -322,7 +410,7 @@ const ChartConfigWrapper = styled.div`
       label {
         font-size: 14px;
         font-weight: 400;
-        font-family: "SF Pro Text";
+        font-family: "Segoe UI";
       }
     }
     div.chart-config-orientation-select {
@@ -363,7 +451,7 @@ const ChartConfigWrapper = styled.div`
         label {
           font-size: 14px;
           font-weight: 400;
-          font-family: "SF Pro Text";
+          font-family: "Segoe UI";
         }
       }
     }

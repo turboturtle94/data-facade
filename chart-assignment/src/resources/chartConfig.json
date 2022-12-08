@@ -1,40 +1,103 @@
 {
-    "data":{
-        "items":[
-            {
-                "label":"Action output",
-                "value":"Action output"
-            },
-            {
-                "label":"CSV File",
-                "value":"CSV File"
-            }
-        ]
-    },
-    "type":{
-        "items":[
-            {
-                "label":"Bar Graph",
-                "value":"Bar",
-                "icon":"barChart"
-            },
-            {
-                "label":"Line Graph",
-                "value":"Line",
-                "icon":"lineChart"
-            }
-        ]
-    },
-    "orientation":{
-        "items":[
-            {
-                "label":"Horizontal",
-                "value":"horizontal"
-            },
-            {
-                "label":"Vertical",
-                "value":"vertical"
-            }
-        ]
-    }
+  "data": {
+    "items": [
+      {
+        "label": "Action output",
+        "value": "actioOutput"
+      },
+      {
+        "label": "CSV File",
+        "value": "csvFile"
+      }
+    ]
+  },
+  "type": {
+    "items": [
+      {
+        "label": "Bar Graph",
+        "value": "bar",
+        "icon": "barChart"
+      },
+      {
+        "label": "Line Graph",
+        "value": "line",
+        "icon": "lineChart"
+      }
+    ]
+  },
+  "orientation": {
+    "items": [
+      {
+        "label": "Horizontal",
+        "value": "horizontal"
+      },
+      {
+        "label": "Vertical",
+        "value": "vertical"
+      }
+    ]
+  },
+  "axisType": {
+    "items": [
+      {
+        "label": "None",
+        "value": "none"
+      },
+      {
+        "label": "Quantitative",
+        "value": "quantitative"
+      },
+
+      {
+        "label": "Nominal",
+        "value": "nominal"
+      },
+
+      {
+        "label": "Temporal",
+        "value": "temporal"
+      },
+      {
+        "label": "Ordinal",
+        "value": "ordinal"
+      }
+    ]
+  },
+  "aggregate": {
+    "items": [
+      {
+        "label": "None",
+        "value": "none"
+      },
+      {
+        "label": "Count",
+        "value": "count"
+      },
+      {
+        "label": "Sum",
+        "value": "sum"
+      },
+      {
+        "label": "Average",
+        "value": "average"
+      }
+    ]
+  },
+  "sort": {
+    "items": [
+      {
+        "label": "None",
+        "value": "none"
+      },
+      {
+        "label": "Ascending",
+        "value": "ascending"
+      },
+
+      {
+        "label": "Descending",
+        "value": "descending"
+      }
+    ]
+  }
 }

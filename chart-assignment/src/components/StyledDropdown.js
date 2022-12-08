@@ -50,7 +50,7 @@ const BasicStyledDropDownWrapper = styled.select`
   background-repeat: no-repeat;
   background-position-x: 100%;
   background-position-y: 50%;
-  font-family: "SF Pro Text";
+  font-family: "Segoe UI";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -64,9 +64,11 @@ export const AdvancedStyledDropDown = ({
   defaultValue,
   callback,
   backgroundColor,
+  defaultIcon
 }) => {
   const getIcon = (value) => {
-    return content.filter((item) => item.value === value)[0].icon;
+    const iconName = content.filter((item) => item.value === value)[0];
+    return iconName ? iconName.icon:defaultIcon;
   };
   const [selectedValue, setSelectedValue] = useState(defaultValue);
   const [currentIcon, setCurrentIcon] = useState(getIcon(defaultValue));
@@ -99,7 +101,7 @@ export const AdvancedStyledDropDown = ({
 };
 
 const AdvancedStyledDropDownWrapper = styled.select`
-  position: relative;
+  position: absolute;
   display: flex;
   padding-left: 22px;
   padding-right: 22px;
@@ -124,6 +126,8 @@ const AdvancedStyledDropDownWrapper = styled.select`
   text-align: left;
   color: #687a92;
   border: none;
+  text-transform: capitalize;
+  transform: translate(-50%,-50%);
 `;
 
 const SelectWrapper = styled.div`
@@ -132,5 +136,7 @@ const SelectWrapper = styled.div`
     position: absolute;
     top: 4px;
     z-index: 2;
+    padding-left:4px;
+    transform: translate(-134px,-17px);
   }
 `;
