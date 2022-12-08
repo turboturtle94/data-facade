@@ -1,15 +1,28 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 
 import ConnectionGrid from "./ConnectionGrid";
 
+import { Chart } from "./Chart";
+
 export const ChartContainer = () => {
+  const [chartPaneExpanded, setChartPaneExpanded] = useState(false);
+  const expandChartPane = () => {
+    setChartPaneExpanded((prevState) => !prevState);
+  };
   return (
     <ChartContainerWrapper>
       <header>
         <div className="header__title">
           <div className="header__title__icon-expand">
-            <label>&#10095;</label>
+            <button
+              onClick={() => {
+                expandChartPane();
+              }}
+              className={chartPaneExpanded ? "collapse-pane" : "expand-pane"}
+            >
+              &#10095;
+            </button>
           </div>
           <div className="header__title__icon-chart">
             <svg
@@ -57,7 +70,34 @@ export const ChartContainer = () => {
           purchase data.
         </p>
       </header>
-   <ConnectionGrid></ConnectionGrid>
+      <div className="chart__header__title">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="32" height="32" rx="16" fill="#5664D2" />
+          <path
+            d="M9.33333 21.8333H22.6667V22.6666H9.33333V21.8333Z"
+            fill="white"
+          />
+          <path
+            d="M9.33333 9.33325H10.1667V22.6666H9.33333V9.33325Z"
+            fill="white"
+          />
+          <path
+            d="M16.8333 15.9999L14.4167 13.4999L11 16.8333V20.9999H22.6667V10.0833L16.8333 15.9999Z"
+            fill="white"
+          />
+        </svg>
+        <p className="text">
+          <span>Chart config</span>
+        </p>
+      </div>
+      {chartPaneExpanded ? <Chart></Chart> : null}
+      <ConnectionGrid></ConnectionGrid>
     </ChartContainerWrapper>
   );
 };
@@ -69,8 +109,29 @@ const ChartContainerWrapper = styled.div`
   font-weight: 400;
   line-height: 20px;
   padding: 1em;
-  header{
-      margin-bottom: 20px;
+  header {
+    margin-bottom: 20px;
+  }
+  div.chart__header__title {
+    display: flex;
+    gap: 7.55px;
+    background-color: #f0f2f5;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    svg {
+      margin-left: 42px;
+    }
+    p {
+      position: relative;
+      span {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-size: 13px;
+        color: #5664d2;
+      }
+    }
   }
   div.header__title {
     display: flex;
@@ -79,10 +140,19 @@ const ChartContainerWrapper = styled.div`
     justify-content: space-between;
     & > div.header__title__icon-expand {
       position: relative;
-      label {
+      button {
         position: absolute;
         top: 25%;
         font-size: 16px;
+        border: none;
+        background: none;
+      }
+      button.collapse-pane {
+        transform: rotate(90deg);
+      }
+
+      button.expand-pane {
+        transform: translate(-90deg);
       }
     }
     & > div.header__title__icon-chart {

@@ -7,6 +7,8 @@ export const SourceConfigActions = ({ setGridData }) => {
     schema: "",
     table: "",
   });
+
+  const [showConfigMetaData,setShowConfigMetaData] = useState(false);
   const getGridData = () => {
     setGridData(rowData.results);
   };
@@ -126,6 +128,7 @@ export const SourceConfigActions = ({ setGridData }) => {
         <div className="grid__header__body-connectconfig-action">
           <button
             onClick={() => {
+              setShowConfigMetaData(prevData => !prevData)
               getGridData();
             }}
             disabled={
@@ -145,9 +148,7 @@ export const SourceConfigActions = ({ setGridData }) => {
           </button>
         </div>
       </div>
-      {connectionObject.name &&
-      connectionObject.schema &&
-      connectionObject.table ? (
+      { showConfigMetaData? (
         <ul>
           <li>
               {connectionObject.name}

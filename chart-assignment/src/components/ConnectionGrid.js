@@ -9,32 +9,6 @@ export default function ConnectionGrid() {
   const [isSourceConfigOpen, setIsSourceConfigOpen] = useState(false);
   return (
     <ConnectionGridWrapper showConfig={isSourceConfigOpen}>
-      <div className="grid__header__title">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="32" height="32" rx="16" fill="#5664D2" />
-          <path
-            d="M9.33333 21.8333H22.6667V22.6666H9.33333V21.8333Z"
-            fill="white"
-          />
-          <path
-            d="M9.33333 9.33325H10.1667V22.6666H9.33333V9.33325Z"
-            fill="white"
-          />
-          <path
-            d="M16.8333 15.9999L14.4167 13.4999L11 16.8333V20.9999H22.6667V10.0833L16.8333 15.9999Z"
-            fill="white"
-          />
-        </svg>
-        <p className="text">
-          <span>Chart config</span>
-        </p>
-      </div>
       <div className="grid__header__body">
         <div className="grid__header__body__options">
           <div className="grid__header__body__options-dataframes">
@@ -109,13 +83,13 @@ export default function ConnectionGrid() {
                     d="M6.9984 8.21095C5.24467 8.21095 3.49122 8.2104 1.73749 8.21149C1.42347 8.21177 1.18671 8.08353 1.06039 7.79389C0.857889 7.32915 1.18753 6.84085 1.70817 6.8266C1.93643 6.8203 2.16469 6.82523 2.39322 6.82523C3.62631 6.82523 4.85913 6.82523 6.09222 6.82523C6.27417 6.82523 6.27471 6.82495 6.27471 6.64629C6.27499 5.04794 6.27362 3.44958 6.27691 1.85122C6.27718 1.72517 6.28705 1.59172 6.32924 1.47499C6.45612 1.12315 6.80248 0.943117 7.17706 1.01601C7.49657 1.07793 7.74346 1.3821 7.74401 1.73092C7.7462 3.26982 7.74511 4.80899 7.74538 6.34789C7.74538 6.45749 7.75387 6.56792 7.74319 6.67644C7.73086 6.80303 7.78484 6.82769 7.89993 6.82742C9.34757 6.82413 10.7952 6.82495 12.2429 6.82578C12.5884 6.82605 12.8317 6.97978 12.9496 7.26613C13.126 7.69552 12.8183 8.18382 12.3547 8.2093C12.2955 8.21259 12.236 8.21095 12.1766 8.21095C10.4508 8.21095 8.72473 8.21095 6.9984 8.21095Z"
                     fill="#65676B"
                     stroke="#65676B"
-                    stroke-width="0.3"
+                    strokeWidth="0.3"
                   />
                   <path
                     d="M7.00273 9.05106C8.19911 9.05106 9.3952 9.0516 10.5916 9.05078C10.822 9.05051 11.0289 9.10668 11.1695 9.30233C11.3084 9.49579 11.3287 9.71007 11.2246 9.92408C11.1232 10.1329 10.9511 10.2488 10.7146 10.2584C10.6554 10.2609 10.596 10.2606 10.5365 10.2606C9.69169 10.2609 8.84716 10.263 8.00236 10.2581C7.87193 10.2573 7.83137 10.294 7.83165 10.4272C7.83576 12.1349 7.83439 13.8426 7.83411 15.5503C7.83411 15.8816 7.69847 16.1372 7.39212 16.2759C6.92299 16.488 6.39057 16.1575 6.35851 15.6426C6.35495 15.5834 6.3566 15.524 6.3566 15.4645C6.3566 13.7932 6.3566 12.1223 6.3566 10.451C6.3566 10.2611 6.35632 10.2606 6.17163 10.2606C5.24024 10.2603 4.30857 10.2611 3.37718 10.2598C3.0637 10.2592 2.86531 10.1332 2.76063 9.87586C2.62938 9.55333 2.819 9.16888 3.15686 9.08476C3.25305 9.06092 3.35526 9.05215 3.45472 9.05215C4.63767 9.05023 5.82006 9.05106 7.00273 9.05106Z"
                     fill="#65676B"
                     stroke="#65676B"
-                    stroke-width="0.3"
+                    strokeWidth="0.3"
                   />
                 </svg>
               )}
@@ -187,7 +161,7 @@ export default function ConnectionGrid() {
           </div>
         </div>
         {isSourceConfigOpen ? (
-          <SourceConfigActions setGridData={setGridData}></SourceConfigActions>
+          <SourceConfigActions setGridData={setGridData} isSourceConfigOpen = {isSourceConfigOpen}></SourceConfigActions>
         ) : null}
       </div>
       <GridBody rows={gridData}></GridBody>
@@ -196,27 +170,6 @@ export default function ConnectionGrid() {
 }
 
 const ConnectionGridWrapper = styled.div`
-  div.grid__header__title {
-    display: flex;
-    gap: 7.55px;
-    background-color: #f0f2f5;
-    padding-top: 5px;
-    padding-bottom: 3px;
-    svg {
-      margin-left: 42px;
-    }
-    p {
-      position: relative;
-      span {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        font-size: 13px;
-        color: #5664d2;
-      }
-    }
-  }
   div.grid__header__body {
     padding-left: 42px;
     padding-right: 42px;

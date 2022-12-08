@@ -1,0 +1,40 @@
+{
+    "data":{
+        "items":[
+            {
+                "label":"Action output",
+                "value":"Action output"
+            },
+            {
+                "label":"CSV File",
+                "value":"CSV File"
+            }
+        ]
+    },
+    "type":{
+        "items":[
+            {
+                "label":"Bar Graph",
+                "value":"Bar",
+                "icon":"barChart"
+            },
+            {
+                "label":"Line Graph",
+                "value":"Line",
+                "icon":"lineChart"
+            }
+        ]
+    },
+    "orientation":{
+        "items":[
+            {
+                "label":"Horizontal",
+                "value":"horizontal"
+            },
+            {
+                "label":"Vertical",
+                "value":"vertical"
+            }
+        ]
+    }
+}
