@@ -342,6 +342,7 @@ const ChartConfigWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1px;
+  margin-left: 83px;
   div.chart-config {
     background-color: white;
     width: 351px;

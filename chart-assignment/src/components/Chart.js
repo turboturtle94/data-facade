@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { ChartDisplay } from "./ChartDisplay";
 import { ChartConfig } from "./ChartConfig";
+import { ChartSideNav } from "./ChartSideNav";
 
 import { ChartContext, ChartDispatchContext } from "./ChartContext";
 
@@ -75,9 +76,8 @@ export const Chart = () => {
     }
   };
 
-
   const [chartConfig, dispatch] = useReducer(chartReducer, {
-    type: "barChart",
+    type: "bar",
     orientation: "vertical",
     xColumn: "",
     yColumn: "",
@@ -94,8 +94,9 @@ export const Chart = () => {
     <ChartContext.Provider value={chartConfig}>
       <ChartDispatchContext.Provider value={dispatch}>
         <ChartWrapper>
-          <ChartConfig></ChartConfig>
-          <ChartDisplay></ChartDisplay>
+          <ChartSideNav></ChartSideNav>
+            <ChartConfig></ChartConfig>
+            <ChartDisplay></ChartDisplay>
         </ChartWrapper>
       </ChartDispatchContext.Provider>
     </ChartContext.Provider>
@@ -110,4 +111,5 @@ const ChartWrapper = styled.div`
   padding-top: 19px;
   padding-bottom: 33px;
   overflow: scroll;
+  position: relative;
 `;

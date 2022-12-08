@@ -352,6 +352,61 @@ export const SVGMapper = ({ name }) => {
         <path d="M16 10H20V18H16V10Z" fill="#1C2E45" fill-opacity="0.6" />
       </svg>
     ),
+    barChartBig: (
+      <svg
+        width="38"
+        height="38"
+        viewBox="0 0 38 38"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.91666 30.0833H31.6667V31.6666H7.91666V30.0833Z"
+          fill="#1C2E45"
+          fill-opacity="0.6"
+        />
+        <path
+          d="M7.91666 23.75H12.6667V28.5H7.91666V23.75Z"
+          fill="#1C2E45"
+          fill-opacity="0.6"
+        />
+        <path
+          d="M14.25 20.5833H19V28.5H14.25V20.5833Z"
+          fill="#1C2E45"
+          fill-opacity="0.6"
+        />
+        <path
+          d="M20.5833 14.25H25.3333V28.5H20.5833V14.25Z"
+          fill="#1C2E45"
+          fill-opacity="0.6"
+        />
+        <path
+          d="M26.9167 6.33331H31.6667V28.5H26.9167V6.33331Z"
+          fill="#1C2E45"
+          fill-opacity="0.6"
+        />
+      </svg>
+    ),
+    lineChartBig: (
+      <svg
+        width="38"
+        height="38"
+        viewBox="0 0 38 38"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.91667 30.0833V6.33331H6.33334V31.6666H31.6667V30.0833H7.91667Z"
+          fill="#1C2E45"
+          fill-opacity="0.6"
+        />
+        <path
+          d="M20.5833 19L15.8333 14.25L9.5 20.5833V23.75L15.8333 17.4166L20.5833 22.1666L31.6667 11.0833V7.91663L20.5833 19Z"
+          fill="#1C2E45"
+          fill-opacity="0.6"
+        />
+      </svg>
+    ),
   };
   return svgMap[name];
 };
