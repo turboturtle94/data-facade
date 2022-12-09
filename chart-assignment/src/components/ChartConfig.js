@@ -27,6 +27,13 @@ export const ChartConfig = () => {
       value,
     });
   };
+  const onXTitleChange = (value) => {
+    dispatchChartActions({
+      type: "changeXTitle",
+      value,
+    });
+  };
+
   const onXColumnChange = (value) => {
     dispatchChartActions({
       type: "changeXColumn",
@@ -50,6 +57,12 @@ export const ChartConfig = () => {
   const onXSortChange = (value) => {
     dispatchChartActions({
       type: "changeXSort",
+      value,
+    });
+  };
+  const onYTitleChange = (value) => {
+    dispatchChartActions({
+      type: "changeYTitle",
       value,
     });
   };
@@ -150,9 +163,9 @@ export const ChartConfig = () => {
           </div>
           <div className="chart-config-orientation-radio">
             <label>Tooltip</label>
-            <input type="radio"></input>
+            <input type="radio" name="tooltip"></input>
             <label>Enable</label>
-            <input type="radio"></input>
+            <input type="radio" name="tooltip"></input>
             <label>Disable</label>
           </div>
         </div>
@@ -206,12 +219,14 @@ export const ChartConfig = () => {
         <div className="chart-config-axis-options">
           <div className="chart-config-axis chart-config-title-select">
             <label>Title</label>
-            <BasicStyledDropDown
-              width="209"
-              height="33.57"
-              defaultValue={chartConfig.xTitle}
-              content={chartData.orientation.items}
-            ></BasicStyledDropDown>
+            <input
+              type="text"
+              onChange={(event) => {
+                event.persist();
+                onXTitleChange(event.target.value);
+              }}
+              value={chartConfig.xTitle}
+            />
           </div>
           <div className="chart-config-axis chart-config-type-select">
             <label>Type</label>
@@ -295,12 +310,14 @@ export const ChartConfig = () => {
         <div className="chart-config-axis-options">
           <div className="chart-config-axis chart-config-title-select">
             <label>Title</label>
-            <BasicStyledDropDown
-              width="209"
-              height="33.57"
-              defaultValue={chartConfig.yTitle}
-              content={chartData.orientation.items}
-            ></BasicStyledDropDown>
+            <input
+              type="text"
+              onChange={(event) => {
+                event.persist();
+                onYTitleChange(event.target.value);
+              }}
+              value={chartConfig.yTitle}
+            />
           </div>
           <div className="chart-config-axis chart-config-type-select">
             <label>Type</label>
@@ -450,6 +467,19 @@ const ChartConfigWrapper = styled.div`
       border-radius: 5px;
       padding: 14px;
       box-sizing: border-box;
+      div.chart-config-title-select {
+        input {
+          height: 27px;
+          width: 208px;
+          border-radius: 2.67px;
+          padding: 6px 12px 6px 12px;
+          box-sizing: border-box;
+          background: #ffffff;
+          box-shadow: inset 0px -1px 0px #c9cfda;
+          border-radius: 2.61px;
+          border: none;
+        }
+      }
       div.chart-config-axis {
         display: flex;
         justify-content: space-between;

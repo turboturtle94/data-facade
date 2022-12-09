@@ -8,7 +8,6 @@ import { SVGMapper } from "./SVGMapper";
 
 export const ChartSideNav = () => {
   const chartConfig = useContext(ChartContext);
-  console.log(chartConfig.type);
   return (
     <ChartSideNavWrapper>
       <div>

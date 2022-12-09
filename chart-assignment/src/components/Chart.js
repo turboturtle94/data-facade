@@ -7,6 +7,8 @@ import { ChartSideNav } from "./ChartSideNav";
 
 import { ChartContext, ChartDispatchContext } from "./ChartContext";
 
+import data from "../resources/response1.json";
+
 export const Chart = () => {
   const chartReducer = (chartConfig, action) => {
     switch (action.type) {
@@ -75,12 +77,12 @@ export const Chart = () => {
       }
     }
   };
-
+  
   const [chartConfig, dispatch] = useReducer(chartReducer, {
     type: "bar",
     orientation: "vertical",
-    xColumn: "",
-    yColumn: "",
+    xColumn: Object.keys(data.results[0])[0],
+    yColumn: Object.keys(data.results[0])[0],
     xTitle: "",
     yTitle: "",
     xType: "none",
@@ -90,6 +92,7 @@ export const Chart = () => {
     xSort: "ascending",
     ySort: "ascending",
   });
+  console.log(chartConfig);
   return (
     <ChartContext.Provider value={chartConfig}>
       <ChartDispatchContext.Provider value={dispatch}>

@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ChartContext } from "./ChartContext";
+
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
 
 import styled from "styled-components";
 
+import {generateBarData, getSampleChartData} from "../utils/chartUtils";
+
+import data from "../resources/response1.json"
+
 export const ChartDisplay = () => {
+  const chartConfig = useContext(ChartContext);
+  const chartOptions = generateBarData(data.results,chartConfig);
   return (
     <ChartDisplayWrapper>
       <div className="chart-desc">
@@ -35,7 +45,18 @@ export const ChartDisplay = () => {
           an axis
         </p>
       </div>
-      <div className="chart-content"></div>
+      <div className="chart-content">
+        {chartOptions.series.data && chartOptions.series.data.length > 0 ? (
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={chartOptions}
+            isPureConfig={true}
+          />
+        ) : <HighchartsReact
+          highcharts={Highcharts}
+          options={getSampleChartData(chartConfig)}
+        />}
+      </div>
     </ChartDisplayWrapper>
   );
 };
